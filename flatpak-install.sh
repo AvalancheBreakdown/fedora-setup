@@ -11,5 +11,5 @@ PACKAGES=$(cat flatpak-packages.txt)
 
 # Install the packages using flatpak
 for PACKAGE in $PACKAGES; do
-  flatpak install -y $PACKAGE
+  flatpak install --system -y $PACKAGE
 done
