@@ -13,7 +13,6 @@ Dialog must be installed for the menu system to work and as such the script will
 ## Files
 
 - **flatpak-packages.txt** - This file contains a list of all flat packages to install on the system. you can customise this with your choice of applications by application-id.
-- **flatpak-packages-user.txt** - This file contains a list of all flat packages to install as user. you can customise this with your choice of applications by application-id.
 - **dnf-packages.txt** - This file contains a list of all applications that will be installed via the Fedora and RPMFusion repositories.
 - **cargo-packages.txt** - This file contains a list of all crates that can be installed via Cargo.
 - **gsettings.sh** - Contains settings to change some of the defaults of GNOME

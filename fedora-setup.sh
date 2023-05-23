@@ -18,16 +18,15 @@ fi
 OPTIONS=(1 "Enable RPM Fusion - Enables the RPM Fusion repos for your specific version"
          2 "Update Firmware - If your system supports FW update delivery"
          3 "Set sane defaults for dnf"
-         4 "Enable Flatpak for entire system (all users) - Enables the Flatpak repo and installs packages located in flatpak-packages.txt"
-         5 "Enable Flatpak only for user - Enables the Flatpak repo and installs packages located in flatpak-packages-user.txt"
-         6 "Select DE"
-         7 "Install Software - Enables specified COPRs and installs specified software"
-         8 "Update hosts file"
-         9 "Install and Set up Fish"
-         10 "Install Extras - Themes Fonts and Codecs"
-         11 "Set up Rust and Cargo"
-         12 "Install Nvidia - Install akmod Nvidia drivers"
-	     13 "Quit")
+         4 "Enable Flatpak - choose to enable flatpak for system or user and install packages located in flatpak-packages.txt"
+         5 "Select DE"
+         6 "Install Software - Enables specified COPRs and installs specified software"
+         7 "Update hosts file"
+         8 "Install and Set up Fish"
+         9 "Install Extras - Themes Fonts and Codecs"
+         10 "Set up Rust and Cargo"
+         11 "Install Nvidia - Install akmod Nvidia drivers"
+	     12 "Quit")
 
 while [ "$CHOICE -ne 4" ]; do
     CHOICE=$(dialog --clear \
