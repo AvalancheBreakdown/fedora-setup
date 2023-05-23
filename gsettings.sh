@@ -5,6 +5,9 @@ gsettings set org.gnome.desktop.interface font-name 'Fira Sans Regular 12'
 gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrainsMono Nerd Font Medium 12'
 gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Fira Sans Bold 12'
 
+# Icon Themes
+gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
+
 # Other Settings
 gsettings set org.gnome.desktop.interface clock-format '24h'
 gsettings set org.gnome.desktop.interface clock-show-date true

@@ -35,7 +35,7 @@ Dialog must be installed for the menu system to work and as such the script will
   - Updates firmware providing you have hardware that supports it.
 
 - ## Speed up DNF
-  - changes the dnf.conf to a custom one with better defaults.
+  - changes the /etc/dnf/dnf.conf to a custom one with better defaults.
 
 - ## Enable Flatpak and Packages (For system, user or both)
   - Adds the flatpak repo, updates and installs the packages specified in flatpak-packages.txt and/or flatpak-packages-user.txt
@@ -56,7 +56,7 @@ Dialog must be installed for the menu system to work and as such the script will
   - installs the [Fisher Plugin Manager](https://github.com/jorgebucaran/fisher)
   
 - ## Install Extras
-  ### Installs the following theme:
+  ### Installs the following Icon Theme
     - [**Papirus Icon Theme**](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
     - [**Papirus Folders**](https://github.com/PapirusDevelopmentTeam/papirus-folders)
   ### Along with the following fonts
@@ -81,7 +81,8 @@ Dialog must be installed for the menu system to work and as such the script will
 
 - ## Set defaults in Gnome:
     - Settings accourding to that in gsettings.sh
-        - sets cloch to 24 hours
+        - sets clock to 24 hours
         - shows date on bar
         - sets some better fonts as default
+        - Sets Icon Theme to 'Papirus-Dark'
         - Centers new windows by default
