@@ -1,0 +1,4 @@
+atim/lazygit
+kylegospo/webapp-manager
+phracek/PyCharm
+bat-extras
