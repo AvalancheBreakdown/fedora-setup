@@ -1,6 +1,6 @@
+neofetch
 vim
 curl
-neofetch
 btop
 gnome-tweaks
 vlc
@@ -15,7 +15,6 @@ yad
 wget
 fish
 timeshift
-pulsemixer
 tlp
 thunderbird
 make
@@ -31,4 +30,3 @@ ranger
 figlet
 cmake
 HandBrake
-

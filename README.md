@@ -46,7 +46,7 @@ Dialog must be installed for the menu system to work and as such the script will
 
 - ## Install Software
   - Installs the pieces of software you specify in dnf-packages.txt
-
+    - Note: Do not leave empty lines on top or boot of the file
 - ## Hosts File
     - Downloads hostfile specified in hosts.sh
     - Be default uses [StevenBlack](https://github.com/StevenBlack/hosts)

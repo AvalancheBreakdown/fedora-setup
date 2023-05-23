@@ -75,7 +75,13 @@ while [ "$CHOICE -ne 4" ]; do
             ;;
 
         7)  echo "Installing Software"
-            sudo dnf copr enable -y $(cat copr-list.txt)
+            num_lines=$(cat copr-list.txt | wc -l)
+            for (( i=1; i<=num_lines; i++ ))
+            do
+              line=$(sed -n "${i}p" copr-list.txt)
+              sudo dnf copr enable -y $line
+            done
+
             sudo dnf update -y
             sudo dnf install -y $(cat dnf-packages.txt)
             notify-send "Software has been installed" --expire-time=10
