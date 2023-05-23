@@ -3,12 +3,12 @@
 HEIGHT=20
 WIDTH=90
 CHOICE_HEIGHT=4
-BACKTITLE="Choose installation Flatpak method"
+BACKTITLE="Choose Flatpak Installation method"
 TITLE="Please Make a selection"
 MENU="Please Choose one of the following Desktop Environments:"
 
-OPTIONS=(1  "User"
-         2  "System"
+OPTIONS=(1  "System"
+         2  "User"
          3  "Quit")
 
 while [ "$CHOICE -ne 4" ]; do

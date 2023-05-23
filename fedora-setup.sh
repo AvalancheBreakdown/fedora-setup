@@ -60,15 +60,15 @@ while [ "$CHOICE -ne 4" ]; do
             notify-send "Your DNF config has now been amended" --expire-time=10
             ;;
 
-       4)  echo "Enabling Flatpak"
+        4)  echo "Enabling Flatpak"
            ./flatpak.sh
            ;;
 
-        6)  echo "Select your Desktop Environment"
+        5)  echo "Select your Desktop Environment"
             ./de.sh
             ;;
 
-        7)  echo "Installing Software"
+        6)  echo "Installing Software"
             num_lines=$(cat copr-list.txt | wc -l)
             for (( i=1; i<=num_lines; i++ ))
             do
@@ -81,18 +81,18 @@ while [ "$CHOICE -ne 4" ]; do
             notify-send "Software has been installed" --expire-time=10
             ;;
 
-        8)  echo "Updating Hosts"
+        7)  echo "Updating Hosts"
             sudo ./hosts.sh
             ;;
 
-        9)  echo "Set up Fish"
+        8)  echo "Set up Fish"
             sudo dnf -y install fish util-linux-user
             chsh -s "$(which fish)"
             curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
             notify-send "Fish ready" --expire-time=10
             ;;
 
-        10) echo "Installing Extras"
+        9) echo "Installing Extras"
             sudo dnf groupupdate -y sound-and-video
             sudo dnf install -y libdvdcss
             sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,ugly-\*,base} gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel ffmpeg gstreamer-ffmpeg
@@ -110,16 +110,16 @@ while [ "$CHOICE -ne 4" ]; do
             source gsettings.sh
             notify-send "All done" --expire-time=10
            ;;
-       11)  echo "Seting up cargo"
+       10)  echo "Seting up cargo"
             sudo dnf install -y rust cargo
             cargo install $(cat cargo-packages.txt)
             notify-send "Cargo has been installed" --expire-time=10
            ;;
-       12)  echo "Installing Nvidia Driver Akmod-Nvidia"
+       11)  echo "Installing Nvidia Driver Akmod-Nvidia"
             sudo dnf install -y akmod-nvidia
             notify-send "Please wait 5 minutes until rebooting" --expire-time=10
 	       ;;
-       13)
+       12)
           exit 0
           ;;
     esac
