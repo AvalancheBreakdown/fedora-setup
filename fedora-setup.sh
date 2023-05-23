@@ -66,7 +66,7 @@ while [ "$CHOICE -ne 4" ]; do
         5)  echo "Enabling (user) Flatpak"
             flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
             flatpak update
-            source flatpak-install.sh
+            source flatpak-install-user.sh
             notify-send "Flatpak (user) has now been enabled" --expire-time=10
            ;;
 
