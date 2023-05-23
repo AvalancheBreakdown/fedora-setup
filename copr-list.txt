@@ -1,4 +1,4 @@
 atim/lazygit
 kylegospo/webapp-manager
 phracek/PyCharm
-bat-extras
+awood/bat-extras
