@@ -23,7 +23,7 @@ Dialog must be installed for the menu system to work and as such the script will
 
 ## Screenshot
 
-![Screenshot](fedora-setup-screenshot.png)
+![Screenshot](assets/fedora-setup-screenshot.png)
 
 # Options
 
@@ -41,7 +41,7 @@ Dialog must be installed for the menu system to work and as such the script will
   - Adds the flatpak repo, updates and installs the packages specified in flatpak-packages.txt and/or flatpak-packages-user.txt
 
 - ## Select Desktop Environment
-  - Lets you select from a list of DEs provided by Fedora.
+  - Lets you select from a [list of DEs](assets/de-installer.png) provided by Fedora.
   - Includes KDE Plasma, GNOME, XFCE, Budgie, Sway, i3, LXDE, LXQT, Cinnamon, Mate (along with Compiz) and Deepin
 
 - ## Install Software
