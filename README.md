@@ -65,3 +65,10 @@ Dialog must be installed for the menu system to work and as such the script will
     - **gstreamer plugins**
   ### Install Nvidia
     - **Installs the akmod-nvidia driver from the RPMFusion repo's**
+
+- ## Set defaults in Gnome:
+    - Settings accourding to that in gsettings.sh
+        - sets cloch to 24 hours
+        - shows date on bar
+        - sets some better fonts as default
+        - Centers new windows by default
