@@ -47,29 +47,21 @@ while [ "$CHOICE -ne 4" ]; do
             sudo dnf install -y rpmfusion-free-release-tainted
             sudo dnf install -y dnf-plugins-core
             notify-send "RPM Fusion Enabled" --expire-time=10
-           ;;
+            ;;
         2)  echo "Updating System Firmware"
             sudo fwupdmgr get-devices
             sudo fwupdmgr refresh --force
             sudo fwupdmgr get-updates
             sudo fwupdmgr update
-           ;;
+            ;;
         3)  echo "Speeding Up DNF"
             sudo rm /etc/dnf/dnf.conf
             sudo mv $PWD/dnf.conf /etc/dnf/dnf.conf
             notify-send "Your DNF config has now been amended" --expire-time=10
-           ;;
-        4)  echo "Enabling Flatpak (System)"
-            flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-            flatpak update
-            source flatpak-install.sh
-            notify-send "Flatpak (System) has now been enabled" --expire-time=10
-           ;;
-        5)  echo "Enabling (user) Flatpak"
-            flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-            flatpak update
-            source flatpak-install-user.sh
-            notify-send "Flatpak (user) has now been enabled" --expire-time=10
+            ;;
+
+       4)  echo "Enabling Flatpak"
+           ./flatpak.sh
            ;;
 
         6)  echo "Select your Desktop Environment"

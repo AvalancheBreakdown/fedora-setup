@@ -23,11 +23,17 @@ while [ "$CHOICE -ne 4" ]; do
 clear
      case $CHOICE in
         1)  echo "Installing Flatpak as System"
-            sudo dnf install -y @kde-desktop fedora-release-kde
-           ;;
+            flatpak remote-add --if-not-exists flathub https://flathub.org/repo/    flathub.flatpakrepo
+            flatpak update
+            source flatpak-install.sh
+            notify-send "Flatpak (System) has now been enabled" --expire-time=10
+            ;;
         2)  echo "Installing Flatpak as User"
-            sudo dnf install -y @kde-desktop fedora-release-kde
-           ;;
+            flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/    flathub.flatpakrepo
+            flatpak update
+            source flatpak-install-user.sh
+            notify-send "Flatpak (User) has now been enabled" --expire-time=10
+            ;;
        3)
           exit 0
           ;;
