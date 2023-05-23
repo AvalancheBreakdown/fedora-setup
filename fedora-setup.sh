@@ -102,7 +102,7 @@ while [ "$CHOICE -ne 4" ]; do
             sudo -s dnf install -y fontconfig-enhanced-defaults
 	        sudo dnf update -y
 	        sudo dnf install -y iosevka-term-fonts terminus-fonts terminus-fonts-console google-noto-fonts-common mscore-fonts-all
-            sudo cp -r /home/lukey/Documents/miscellanious/Jet_Fira_Ubu /usr/share/fonts
+            sudo cp -r Extra_Fonts/ /usr/share/fonts
             source gsettings.sh
             notify-send "All done" --expire-time=10
            ;;
