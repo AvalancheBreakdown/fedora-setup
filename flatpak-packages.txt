@@ -13,4 +13,3 @@ org.gnome.World.PikaBackup
 org.gnome.FontManager
 com.obsproject.Studio
 de.haeckerfelix.Fragments
-

@@ -10,10 +10,7 @@ MENU="Please Choose one of the following options:"
 # Cache Sudo details for later
 sudo -v
 
-#Check to see if Dialog is installed, if not install it - Thanks Kinkz_nl
-if [ $(rpm -q dialog 2>/dev/null | grep -c "is not installed") -eq 1 ]; then
 sudo dnf install -y dialog
-fi
 
 OPTIONS=(1 "Enable RPM Fusion - Enables the RPM Fusion repos for your specific version"
          2 "Update Firmware - If your system supports FW update delivery"
@@ -25,9 +22,10 @@ OPTIONS=(1 "Enable RPM Fusion - Enables the RPM Fusion repos for your specific v
          8 "Install and Set up Fish"
          9 "Install Extras - Themes Fonts and Codecs"
          10 "Set up Rust and Cargo"
-         11 "Install Nvidia - Install akmod Nvidia drivers"
+         11 "Install the NIX Package manager"
 	     12 "Quit")
 
+# Set an unfulfillable argument to run dialog everytime?
 while [ "$CHOICE -ne 4" ]; do
     CHOICE=$(dialog --clear \
                 --title "$TITLE" \
@@ -56,7 +54,7 @@ while [ "$CHOICE -ne 4" ]; do
             ;;
         3)  echo "Speeding Up DNF"
             sudo rm /etc/dnf/dnf.conf
-            sudo mv $PWD/dnf.conf /etc/dnf/dnf.conf
+            sudo mv "$PWD"/dnf.conf /etc/dnf/dnf.conf
             notify-send "Your DNF config has now been amended" --expire-time=10
             ;;
 
@@ -73,11 +71,11 @@ while [ "$CHOICE -ne 4" ]; do
             for (( i=1; i<=num_lines; i++ ))
             do
               line=$(sed -n "${i}p" copr-list.txt)
-              sudo dnf copr enable -y $line
+              sudo dnf copr enable -y "$line"
             done
 
             sudo dnf update -y
-            sudo dnf install -y $(cat dnf-packages.txt)
+            sudo dnf install -y '$(cat dnf-packages.txt)'
             notify-send "Software has been installed" --expire-time=10
             ;;
 
@@ -107,18 +105,18 @@ while [ "$CHOICE -ne 4" ]; do
 	        sudo dnf install -y iosevka-term-fonts terminus-fonts terminus-fonts-console google-noto-fonts-common mscore-fonts-all papirus-icon-theme
             sudo wget -qO- https://git.io/papirus-folders-install | sh
             sudo cp -r Extra_Fonts/ /usr/share/fonts
-            source gsettings.sh
+            ./gsettings.sh
             notify-send "All done" --expire-time=10
-           ;;
+            ;;
        10)  echo "Seting up cargo"
             sudo dnf install -y rust cargo
-            cargo install $(cat cargo-packages.txt)
+            cargo install "$(cat cargo-packages.txt)"
             notify-send "Cargo has been installed" --expire-time=10
-           ;;
-       11)  echo "Installing Nvidia Driver Akmod-Nvidia"
-            sudo dnf install -y akmod-nvidia
-            notify-send "Please wait 5 minutes until rebooting" --expire-time=10
-	       ;;
+            ;;
+       11)  echo "Installing Nix"
+            sh <(curl -L https://nixos.org/nix/install) --daemon
+            notify-send "The Nix Package Manager has been installed" --expire-time=10
+	        ;;
        12)
           exit 0
           ;;

@@ -7,17 +7,23 @@ Fedora-Setup is a personal script I created to help with post install tasks such
 Dialog must be installed for the menu system to work and as such the script will check to see if Dialog is installed. If not, it will ask you to install it.
 
 ## Usage
-1. Set the script to be executable `chmod -x fedora-setup.sh` \
-2. Run the script `./fedora-setup.sh`
+- I recommend forking this repo and making the changes in the package lists, etc to work as per your setup now and in the future
+```bash 
+git clone https://github.com/AvalancheBreakdown/fedora-setup.git
+cd fedora-setup
+```
+Edit the files as required, then run the script as:
 
+``` bash
+  ./fedora-setup.sh
+```
 ## Files
 
-- **flatpak-packages.txt** - This file contains a list of all flat packages to install on the system. you can customise this with your choice of applications by application-id.
-- **dnf-packages.txt** - This file contains a list of all applications that will be installed via the Fedora and RPMFusion repositories.
-- **cargo-packages.txt** - This file contains a list of all crates that can be installed via Cargo.
-- **gsettings.sh** - Contains settings to change some of the defaults of GNOME
-- **hosts.sh** - Contains the link to the hosts file that can replace the default one.
-
+1. **flatpak-packages.txt** - This file contains a list of all flat packages to install on the system. you can customise this with your choice of applications by application-id.
+2. **dnf-packages.txt** - This file contains a list of all applications that will be installed via the Fedora, RPMFusion and COPR repositories.
+3. **cargo-packages.txt** - This file contains a list of all crates that can be installed via Cargo.
+4. **gsettings.sh** - Contains settings to change some of the defaults of GNOME
+5. **hosts.sh** - Contains the link to the hosts file that can replace the default one.
 
 
 ## Screenshot
@@ -36,7 +42,7 @@ Dialog must be installed for the menu system to work and as such the script will
 - ## Speed up DNF
   - changes the /etc/dnf/dnf.conf to a custom one with better defaults.
 
-- ## Enable Flatpak and Packages (For system, user or both)
+- ## Enable Flatpak and Packages (via system or user installation)
   - Adds the flatpak repo, updates and installs the packages specified in flatpak-packages.txt and/or flatpak-packages-user.txt
 
 - ## Select Desktop Environment
@@ -45,10 +51,10 @@ Dialog must be installed for the menu system to work and as such the script will
 
 - ## Install Software
   - Installs the pieces of software you specify in dnf-packages.txt
-    - Note: Do not leave empty lines on top or boot of the file
+    - **Note:** Do not leave empty lines on the top or bottom of the file
 - ## Hosts File
     - Downloads hostfile specified in hosts.sh
-    - Be default uses [StevenBlack](https://github.com/StevenBlack/hosts)
+    - By default uses [StevenBlack](https://github.com/StevenBlack/hosts)
 
 - ## Set up Fish 
   - installs fish and sets it as the default shell
@@ -65,7 +71,7 @@ Dialog must be installed for the menu system to work and as such the script will
     - [**Google Noto Fonts Common**](https://fonts.google.com/noto/specimen/Noto+Sans)
     - **mscore-fonts-all**
     - **Fira Sans**
-    - **JetBrains Nerd Font**
+    - **JetBrainsMono Nerd Font**
     - **Ubuntu**
     - **better fonts by dawid** - [Dawid's COPR](https://copr.fedorainfracloud.org/coprs/dawid/better_fonts/)
   ### Installs the following extras
@@ -83,5 +89,7 @@ Dialog must be installed for the menu system to work and as such the script will
         - sets clock to 24 hours
         - shows date on bar
         - sets some better fonts as default
+            - Fira Sans for Docnument and Interface
+            - JetBrainsMono Nerd Font for Monospace
         - Sets Icon Theme to 'Papirus-Dark'
         - Centers new windows by default
