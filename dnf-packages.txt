@@ -30,3 +30,4 @@ ranger
 figlet
 cmake
 HandBrake
+lazygit

@@ -88,8 +88,7 @@ while [ "$CHOICE -ne 4" ]; do
             ;;
 
         8)  echo "Updating Hosts"
-            sudo dnf install -y $(cat dnf-packages.txt)
-            notify-send "Software has been installed" --expire-time=10
+            sudo ./hosts.sh
             ;;
 
         9)  echo "Set up Fish"
