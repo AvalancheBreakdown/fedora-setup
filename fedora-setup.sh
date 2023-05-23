@@ -18,7 +18,7 @@ OPTIONS=(1 "Enable RPM Fusion - Enables the RPM Fusion repos for your specific v
          4 "Enable Flatpak for entire system (all users) - Enables the Flatpak repo and installs packages located in flatpak-packages.txt"
          5 "Enable Flatpak only for user - Enables the Flatpak repo and installs packages located in flatpak-packages-user.txt"
          6 "Select DE"
-         7 "Install Software - Installs software located in dnf-packages.txt"
+         7 "Install Software - Enables specified COPRs and installs specified software"
          8 "Update hosts file"
          9 "Install and Set up Fish"
          10 "Install Extras - Themes Fonts and Codecs"
@@ -75,6 +75,8 @@ while [ "$CHOICE -ne 4" ]; do
             ;;
 
         7)  echo "Installing Software"
+            sudo dnf copr enable -y $(cat copr-list.txt)
+            sudo dnf update -y
             sudo dnf install -y $(cat dnf-packages.txt)
             notify-send "Software has been installed" --expire-time=10
             ;;
