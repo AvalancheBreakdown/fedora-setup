@@ -1,3 +1,5 @@
+vim
+curl
 neofetch
 btop
 gnome-tweaks

@@ -86,6 +86,7 @@ while [ "$CHOICE -ne 4" ]; do
         9)  echo "Set up Fish"
             sudo dnf -y install fish util-linux-user
             chsh -s "$(which fish)"
+            curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
             notify-send "Fish ready" --expire-time=10
             ;;
 
@@ -101,7 +102,8 @@ while [ "$CHOICE -ne 4" ]; do
             sudo -s dnf install -y fontconfig-font-replacements
             sudo -s dnf install -y fontconfig-enhanced-defaults
 	        sudo dnf update -y
-	        sudo dnf install -y iosevka-term-fonts terminus-fonts terminus-fonts-console google-noto-fonts-common mscore-fonts-all
+	        sudo dnf install -y iosevka-term-fonts terminus-fonts terminus-fonts-console google-noto-fonts-common mscore-fonts-all papirus-icon-theme
+            sudo wget -qO- https://git.io/papirus-folders-install | sh
             sudo cp -r Extra_Fonts/ /usr/share/fonts
             source gsettings.sh
             notify-send "All done" --expire-time=10
