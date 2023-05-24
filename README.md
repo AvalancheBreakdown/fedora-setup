@@ -99,3 +99,6 @@ Edit the files as required, then run the script as:
         - Centers new windows by default
         - Adds some keybindings
 
+## To Do 
+- [ ] Add method to restore a borg backup
+
