@@ -31,3 +31,4 @@ figlet
 cmake
 HandBrake
 lazygit
+radicale

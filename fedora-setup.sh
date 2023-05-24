@@ -10,7 +10,11 @@ MENU="Please Choose one of the following options:"
 # Cache Sudo details for later
 sudo -v
 
+# Check if Dialog is installed, else install it
+if [ $(rpm -q dialog 2>/dev/null | grep -c "is not installed") -eq 1 ]; then
 sudo dnf install -y dialog
+fi
+
 
 OPTIONS=(1 "Enable RPM Fusion - Enables the RPM Fusion repos for your specific version"
          2 "Update Firmware - If your system supports FW update delivery"
@@ -53,8 +57,7 @@ while [ "$CHOICE -ne 4" ]; do
             sudo fwupdmgr update
             ;;
         3)  echo "Speeding Up DNF"
-            sudo rm /etc/dnf/dnf.conf
-            sudo mv "$PWD"/dnf.conf /etc/dnf/dnf.conf
+            sudo cat dnf-changes.txt >> /etc/dnf/dnf.conf
             notify-send "Your DNF config has now been amended" --expire-time=10
             ;;
 

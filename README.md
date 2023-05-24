@@ -24,7 +24,7 @@ Edit the files as required, then run the script as:
 3. **cargo-packages.txt** - This file contains a list of all crates that can be installed via Cargo.
 4. **gsettings.sh** - Contains settings to change some of the defaults of GNOME
 5. **hosts.sh** - Contains the link to the hosts file that can replace the default one.
-
+6. **dnf-changes.txt** - Contains additions that will be added to the end of the /etc/dnf/dnf.conf file. 
 
 ## Screenshot
 
@@ -40,7 +40,7 @@ Edit the files as required, then run the script as:
   - Updates firmware providing you have hardware that supports it.
 
 - ## Speed up DNF
-  - changes the /etc/dnf/dnf.conf to a custom one with better defaults.
+  - Appends the /etc/dnf/dnf.conf with better defaults as specified in dnf-changes.txt.
 
 - ## Enable Flatpak and Packages (via system or user installation)
   - Adds the flatpak repo, updates and installs the packages specified in flatpak-packages.txt and/or flatpak-packages-user.txt
