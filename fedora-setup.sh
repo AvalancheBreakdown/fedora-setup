@@ -4,7 +4,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 HEIGHT=20
 WIDTH=90
 CHOICE_HEIGHT=4
-TITLE="Please Make a selection"
+TITLE="Welcome, set up Fedora"
 MENU="Please Choose one of the following options:"
 
 # Cache Sudo details for later
@@ -16,18 +16,19 @@ sudo dnf install -y dialog
 fi
 
 
-OPTIONS=(1 "Enable RPM Fusion - Enables the RPM Fusion repos for your specific version"
-         2 "Update Firmware - If your system supports FW update delivery"
-         3 "Set sane defaults for dnf"
+OPTIONS=(1 "Update dnf.conf - Speed up dnf and set sane defaults"
+         2 "Enable RPM Fusion - Enables the RPM Fusion repos for your specific version"
+         3 "Update Firmware - If your system supports FW update delivery"
          4 "Enable Flatpak - choose to enable flatpak for system or user and install packages located in flatpak-packages.txt"
-         5 "Select DE"
-         6 "Install Software - Enables specified COPRs and installs specified software"
-         7 "Update hosts file"
-         8 "Install and Set up Fish"
-         9 "Install Extras - Themes Fonts and Codecs"
-         10 "Set up Rust and Cargo"
+         5 "Select a Desktop Environment - choose from a list of 13"
+         6 "Install Software - Enables specified COPRs and installs software"
+         7 "Update hosts file - as specified in the hosts.sh file"
+         8 "Install and set Fish as your default shell"
+         9 "Install Extras - Themes, Fonts and Codecs"
+         10 "Install Rust and Cargo"
          11 "Install the NIX Package manager"
-	     12 "Quit")
+         12 "Set the Hostname"
+	     13 "Quit")
 
 # Set an unfulfillable argument to run dialog everytime?
 while [ "$CHOICE -ne 4" ]; do
@@ -42,7 +43,12 @@ while [ "$CHOICE -ne 4" ]; do
 
     clear
     case $CHOICE in
-        1)  echo "Enabling RPM Fusion"
+        1)  echo "Speeding Up DNF"
+            sudo cat dnf-changes.txt >> /etc/dnf/dnf.conf
+            notify-send "Your DNF config has now been amended" --expire-time=10
+            ;;
+
+        2)  echo "Enabling RPM Fusion"
             sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 	        sudo dnf upgrade --refresh
             sudo dnf groupupdate -y core
@@ -50,15 +56,12 @@ while [ "$CHOICE -ne 4" ]; do
             sudo dnf install -y dnf-plugins-core
             notify-send "RPM Fusion Enabled" --expire-time=10
             ;;
-        2)  echo "Updating System Firmware"
+
+        3)  echo "Updating System Firmware"
             sudo fwupdmgr get-devices
             sudo fwupdmgr refresh --force
             sudo fwupdmgr get-updates
             sudo fwupdmgr update
-            ;;
-        3)  echo "Speeding Up DNF"
-            sudo cat dnf-changes.txt >> /etc/dnf/dnf.conf
-            notify-send "Your DNF config has now been amended" --expire-time=10
             ;;
 
         4)  echo "Enabling Flatpak"
@@ -70,13 +73,14 @@ while [ "$CHOICE -ne 4" ]; do
             ;;
 
         6)  echo "Installing Software"
+            # Add COPR repos
             num_lines=$(cat copr-list.txt | wc -l)
             for (( i=1; i<=num_lines; i++ ))
             do
-              line=$(sed -n "${i}p" copr-list.txt)
-              sudo dnf copr enable -y "$line"
+                line=$(sed -n "${i}p" copr-list.txt)
+                sudo dnf copr enable -y "$line"
             done
-
+            # Install Software
             sudo dnf update -y
             sudo dnf install -y '$(cat dnf-packages.txt)'
             notify-send "Software has been installed" --expire-time=10
@@ -93,7 +97,7 @@ while [ "$CHOICE -ne 4" ]; do
             notify-send "Fish ready" --expire-time=10
             ;;
 
-        9) echo "Installing Extras"
+        9)  echo "Installing Extras"
             sudo dnf groupupdate -y sound-and-video
             sudo dnf install -y libdvdcss
             sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,ugly-\*,base} gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel ffmpeg gstreamer-ffmpeg
@@ -111,17 +115,25 @@ while [ "$CHOICE -ne 4" ]; do
             ./gsettings.sh
             notify-send "All done" --expire-time=10
             ;;
-       10)  echo "Seting up cargo"
+
+        10) echo "Seting up cargo"
             sudo dnf install -y rust cargo
             cargo install "$(cat cargo-packages.txt)"
             notify-send "Cargo has been installed" --expire-time=10
             ;;
-       11)  echo "Installing Nix"
+
+        11) echo "Installing Nix"
             sh <(curl -L https://nixos.org/nix/install) --daemon
             notify-send "The Nix Package Manager has been installed" --expire-time=10
 	        ;;
-       12)
+
+        12) echo "Changing Hostname"
+            sudo nano /etc/hostname
+            ;;
+
+        13)
           exit 0
           ;;
     esac
 done
+

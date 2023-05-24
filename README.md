@@ -78,11 +78,15 @@ Edit the files as required, then run the script as:
     - **Sound and video group**
     - **libdvdcss**
     - **gstreamer plugins**
-  ### Install Nvidia
-    - **Installs the akmod-nvidia driver from the RPMFusion repo's**
 
 - ## Set Up Rust and Cargo
     - Installs Rust along with Cargo and the cargo crates specified in cargo-packages.txt
+
+- ## Install the NIX Package manager
+    - Just as the title says
+
+- ## Set the hostname
+    - using nano
 
 - ## Set defaults in Gnome:
     - Settings accourding to that in gsettings.sh
@@ -93,3 +97,5 @@ Edit the files as required, then run the script as:
             - JetBrainsMono Nerd Font for Monospace
         - Sets Icon Theme to 'Papirus-Dark'
         - Centers new windows by default
+        - Adds some keybindings
+
