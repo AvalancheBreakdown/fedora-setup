@@ -22,6 +22,8 @@ Edit the files as required, then run the script as:
 1. **flatpak-packages.txt** - This file contains a list of all flat packages to install on the system. you can customise this with your choice of applications by application-id.
 2. **dnf-packages.txt** - This file contains a list of all applications that will be installed via the Fedora, RPMFusion and COPR repositories.
 3. **cargo-packages.txt** - This file contains a list of all crates that can be installed via Cargo.
+3. **pip-packages.txt** - This file contains a list of all packages that can be installed via python-pip.
+3. **nix-packages.txt** - This file contains a list of all packages that can be installed via the NIX package manager.
 4. **gsettings.sh** - Contains settings to change some of the defaults of GNOME
 5. **hosts.sh** - Contains the link to the hosts file that can replace the default one.
 6. **dnf-changes.txt** - Contains additions that will be added to the end of the /etc/dnf/dnf.conf file. 
@@ -83,7 +85,10 @@ Edit the files as required, then run the script as:
     - Installs Rust along with Cargo and the cargo crates specified in cargo-packages.txt
 
 - ## Install the NIX Package manager
-    - Just as the title says
+    - Installs NIX systemwide and installs packages in nix-packages.txt
+
+- ## Install Python and python-pip
+    - Installs python and installs pip packages in pip-packages.txt as user
 
 - ## Set the hostname
     - using nano

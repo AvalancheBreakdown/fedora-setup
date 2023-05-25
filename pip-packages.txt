@@ -1,0 +1,3 @@
+buku
+nautilus-open-any-terminal
+frogmouth

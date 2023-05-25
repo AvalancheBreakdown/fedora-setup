@@ -25,10 +25,11 @@ OPTIONS=(1 "Update dnf.conf - Speed up dnf and set sane defaults"
          7 "Update hosts file - as specified in the hosts.sh file"
          8 "Install and set Fish as your default shell"
          9 "Install Extras - Themes, Fonts and Codecs"
-         10 "Install Rust and Cargo"
-         11 "Install the NIX Package manager"
-         12 "Set the Hostname"
-	     13 "Quit")
+         10 "Install Rust and Cargo and specified crates"
+         11 "Install the NIX Package manager and specified applications"
+         12 "Install the python and pip and specified packages"
+         13 "Set the Hostname"
+	     14 "Quit")
 
 # Set an unfulfillable argument to run dialog everytime?
 while [ "$CHOICE -ne 4" ]; do
@@ -118,20 +119,26 @@ while [ "$CHOICE -ne 4" ]; do
 
         10) echo "Seting up cargo"
             sudo dnf install -y rust cargo
-            cargo install "$(cat cargo-packages.txt)"
+            cargo install $(cat cargo-packages.txt)
             notify-send "Cargo has been installed" --expire-time=10
             ;;
 
         11) echo "Installing Nix"
             sh <(curl -L https://nixos.org/nix/install) --daemon
             notify-send "The Nix Package Manager has been installed" --expire-time=10
+            nix-env -iA $(cat nix-packages.txt)
 	        ;;
 
-        12) echo "Changing Hostname"
+        12) echo "installing python pip"
+            sudo dnf install -y python pip
+            pip install $(cat pip-packages.txt)
+            ;;
+
+        13) echo "Changing Hostname"
             sudo nano /etc/hostname
             ;;
 
-        13)
+        14)
           exit 0
           ;;
     esac
