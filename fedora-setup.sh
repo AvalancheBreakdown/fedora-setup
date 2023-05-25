@@ -82,7 +82,7 @@ while [ "$CHOICE -ne 4" ]; do
             done
             # Install Software
             sudo dnf update -y
-            sudo dnf install -y '$(cat dnf-packages.txt)'
+            sudo dnf install -y $(cat dnf-packages.txt)
             notify-send "Software has been installed" --expire-time=10
             ;;
 
@@ -92,7 +92,7 @@ while [ "$CHOICE -ne 4" ]; do
 
         8)  echo "Set up Fish"
             sudo dnf -y install fish util-linux-user
-            chsh -s "$(which fish)"
+            chsh -s $(which fish)
             curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
             notify-send "Fish ready" --expire-time=10
             ;;
@@ -118,7 +118,7 @@ while [ "$CHOICE -ne 4" ]; do
 
         10) echo "Seting up cargo"
             sudo dnf install -y rust cargo
-            cargo install "$(cat cargo-packages.txt)"
+            cargo install $(cat cargo-packages.txt)
             notify-send "Cargo has been installed" --expire-time=10
             ;;
 
